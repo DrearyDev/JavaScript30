@@ -39,27 +39,73 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
 
+    let Array = inventors.filter(inventor => { return inventor.year > 1499 && inventor.year < 1600 });
+    console.table(Array);
+
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+
+    let Array2 = inventors.map(inventor => { return `${inventor.first} ${inventor.last}` });
+    console.log(Array2);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
+    let Array3 = inventors.sort((a, b) => { return b.year - a.year });
+    console.log(Array3);
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
 
+    function getSum(total, num){
+      console.log(total);
+      return total + num.passed - num.year;
+    };
+
+    let Array4 = inventors.reduce((total, num) => { return total + (num.passed - num.year) }, 0);
+    console.log(Array4);
+
     // 5. Sort the inventors by years lived
+
+    let Array5 = inventors.sort((a, b) => { return (a.passed - a.year) - (b.passed - b.year)});
+    console.table(Array5); //shortest to longest lives
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // (do this in the browser console)
+
+    // let links = document.querySelectorAll('.mw-category a');   returns nodelist of links
+    // let linksArray = Array.from(links);   turns nodelist to array
+    // let de = linksArray.map(link => { return link.textContent; });   turns array of links to names
+    // de.filter(link => { return link.includes(' de ')});   filters only names with 'de' in them
+
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    console.log(people.sort());
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    console.log(data);
+    let count = data.reduce((obj, item) => {
+      
+      //if key doesnt exist then create it and set it to 0
+      if (!obj[item]) obj[item] = 0;
+
+      //add one to the key within the object
+      obj[item]++;
+
+      return obj
+
+    },{});//initial value is empty object
+
+    console.log(count);
+
+
 
   </script>
 </body>
